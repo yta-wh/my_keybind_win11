@@ -22,25 +22,6 @@ SendMode, Input
 #MaxHotkeysPerInterval 350
 
 #Include IME.ahk
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
-SetTimer, CheckMouse, 100  ; 100ミリ秒ごとにチェック
-flag := false
-
-CheckMouse:
-    MouseGetPos, xpos, ypos
-    if (xpos <= 0 and ypos <= 0)
-    {
-        if (!flag){
-            Send #{Tab}
-            flag := true
-        }
-	
-    } else {
-        flag := flase
-    }
-
-return
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
