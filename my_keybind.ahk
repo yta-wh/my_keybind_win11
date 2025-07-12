@@ -46,8 +46,8 @@ SetTitleMatchMode, 2  ; 部分一致でウィンドウを認識
 ^!Left::MoveSide(0)   ; 左半分
 ^!Up::MoveTopBottom(0)  ; 上半分
 ^!Down::MoveTopBottom(1)  ; 下半分
-^!+Right::MoveSide_third(1)  ; 右1/3分
-^!+Left::MoveSide_third(0)   ; 左1/3分
+^!+Right::MoveSide_two_third(1)  ; 右2/3分
+^!+Left::MoveSide_two_third(0)   ; 左2/3分
 
 ^!=::ScaleWindow(1.1)  ; 拡大
 ^!-::ScaleWindow(0.9)   ; 縮小
@@ -151,9 +151,9 @@ MoveSide(isRight) {
 
 
 ;-------------------------------------------------
-; アクティブウィンドウを左右に配置（1/3ずつ）
+; アクティブウィンドウを左右に配置（2/3ずつ）
 ;-------------------------------------------------
-MoveSide_third(isRight) {
+MoveSide_two_third(isRight) {
     WinGetPos, winX, winY, winW, winH, A
 
     SysGet, monitorCount, MonitorCount
@@ -163,9 +163,9 @@ MoveSide_third(isRight) {
             screenWidth := monRight - monLeft
             screenHeight := monBottom - monTop
 
-            width := screenWidth // 3
+            width := screenWidth // 3 * 2
             height := screenHeight
-            x := monLeft + (isRight * width * 2)
+            x := monLeft + (isRight * width // 2)
             y := monTop
 
             WinGet, activeWin, ID, A
